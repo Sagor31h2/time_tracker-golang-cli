@@ -15,8 +15,26 @@ var stopCmd = &cobra.Command{
 	Use:   "Stop",
 	Short: "Stop tracking time",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Stopped tracking time at:", time.Now().Format(time.RFC1123))
+		if activeTask == "" {
+			fmt.Println("No active task to stop")
+
+		} else {
+			stopActiveTask()
+		}
+
 	},
+}
+
+func stopActiveTask() {
+	taskName := activeTask
+	startTime, exists := tasks[taskName]
+	if !exists {
+		fmt.Printf("Task not found: %s\n", taskName)
+		return
+	}
+	duration := time.Since(startTime)
+	stopTask(taskName)
+	fmt.Printf("Stopped tracking time for: %s (Duration: %s)\n", taskName, duration.Round(time.Second))
 }
 
 func init() {
