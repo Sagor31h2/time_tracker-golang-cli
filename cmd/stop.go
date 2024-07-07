@@ -12,7 +12,7 @@ import (
 
 // stopCmd represents the stop command
 var stopCmd = &cobra.Command{
-	Use:   "Stop",
+	Use:   "stop",
 	Short: "Stop tracking time",
 	Run: func(cmd *cobra.Command, args []string) {
 		if activeTask == "" {

@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -12,10 +13,22 @@ import (
 // statusCmd represents the status command
 var statusCmd = &cobra.Command{
 	Use:   "status",
-	Short: "View current tracking status",
+	Short: "Show status of all tracked tasks and their durations",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Current tracking status.")
-		// Add your status checking logic here
+		if len(tasks) <= 0 {
+			fmt.Println("No Tasks are currently being tracked.")
+		} else {
+
+			fmt.Println("Current tracking status.")
+			for task, startTime := range tasks {
+				duration := time.Since(startTime)
+				if task == activeTask {
+					fmt.Printf("- %s: %s (active)\n", task, duration.Round(time.Second))
+				} else {
+					fmt.Printf("- %s: %s\n", task, duration.Round(time.Second))
+				}
+			}
+		}
 	},
 }
 

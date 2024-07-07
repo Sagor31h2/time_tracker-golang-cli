@@ -34,6 +34,12 @@ A simple time tracker CLI app built with Go and Cobra.
    go build -o time-tracker
    ```
 
+   > windows
+
+```sh
+$env:GOOS = "windows"; $env:GOARCH = "amd64"; go build -o timetracker.exe
+```
+
 ## Usage
 
 You can run the CLI directly using go run:
