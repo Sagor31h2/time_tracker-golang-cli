@@ -14,9 +14,17 @@ import (
 var startCmd = &cobra.Command{
 	Use:   "start",
 	Short: "Start Time Tracking",
+	Args:  cobra.ExactArgs(1),
 
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Started tracking at:", time.Now().Format(time.RFC1123))
+		taskName := args[0]
+		if activeTask != "" {
+			fmt.Printf("Stopping active task: %s\n", activeTask)
+			stopTask(activeTask)
+		}
+		tasks[taskName] = time.Now()
+		activeTask = taskName
+		fmt.Printf("Started tracking time for: %s\n", taskName)
 	},
 }
 

@@ -12,6 +12,7 @@ import (
 
 // stopCmd represents the stop command
 var stopCmd = &cobra.Command{
+	Use:   "Stop",
 	Short: "Stop tracking time",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Stopped tracking time at:", time.Now().Format(time.RFC1123))
