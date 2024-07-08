@@ -1,26 +1,35 @@
 # Time Tracker CLI
 
-A simple time tracker CLI app built with Go and Cobra.
+A simple time tracker CLI app built with Go and [Cobra](https://github.com/spf13/cobra).
 
 ## Table of Contents
 
-- [Time Tracker CLI](#time-tracker-cli)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Commands](#commands)
-  - [Contributing](#contributing)
+- [Demo](#Demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Contributing](#contributing)
+
+## Demo
+
+> Cli overview
+
+![Cli view](/assets/images/1_overview.png)
+
+> Task Commands
+
+![Cli view](/assets/images/2_task_demo.png)
 
 ## Installation
 
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/sagor31h2/time-tracker.git
-   cd time-tracker
+   git clone https://github.com/sagor31h2/timetracker.git
+   cd timetracker
    ```
 
-2. Ensure you have Go installed (version 1.16+).
+2. Ensure you have Go installed (version 1.22.4+).
 
 3. Install dependencies and tidy up the module:
 
@@ -31,35 +40,51 @@ A simple time tracker CLI app built with Go and Cobra.
 4. Build the project:
 
    ```sh
-   go build -o time-tracker
+   go build -o timetracker
    ```
 
    > windows
 
-```sh
-$env:GOOS = "windows"; $env:GOARCH = "amd64"; go build -o timetracker.exe
-```
+   ```sh
+   $env:GOOS = "windows"; $env:GOARCH = "amd64"; go build -o timetracker.exe
+   ```
+
+   > Linux
+
+   ```sh
+   export GOOS=linux
+   export GOARCH=amd64
+   go build -o timetracker
+   ```
+
+   > Mac Os
+
+   ```sh
+   export GOOS=darwin
+   export GOARCH=amd64
+   go build -o timetracker
+   ```
 
 ## Usage
 
-You can run the CLI directly using go run:
+- You can run the CLI directly using go run:
 
-```sh
-go run main.go [command]
-```
+  ```sh
+  go run main.go [command]
+  ```
 
-Or use the built executable:
+- Or use the built executable:
 
-```sh
-./time-tracker [command]
-```
+  ```sh
+  ./timetracker [command]
+  ```
 
 ## Commands
 
 - start: Start tracking time.
 
   ```sh
-  ./time-tracker start
+  ./timetracker start
   ```
 
   Output:
@@ -72,7 +97,7 @@ Or use the built executable:
 - stop: Stop tracking time.
 
   ```sh
-  ./time-tracker stop
+  ./timetracker stop
   ```
 
   Output:
@@ -84,7 +109,7 @@ Or use the built executable:
 - status: View current tracking status.
 
   ```sh
-  ./time-tracker status
+  ./timetracker status
   ```
 
   Output:
