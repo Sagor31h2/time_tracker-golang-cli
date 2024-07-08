@@ -1,11 +1,18 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
 */
 package main
 
-import "github.com/sagor31h2/time_tracker/cmd"
+import (
+	"fmt"
+	"os"
+
+	"github.com/sagor31h2/time_tracker/cmd"
+)
 
 func main() {
-	cmd.Execute()
+	if err := cmd.RootCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
